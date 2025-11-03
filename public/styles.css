@@ -1,0 +1,342 @@
+/* === Styles communs === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffffff, #ff0000, #008000);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  padding: 25px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+/* === Titres et paragraphes === */
+h1, h2, h3 {
+  color: #fff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+p {
+  color: #fff;
+  margin: 10px 0;
+}
+
+/* === Boutons === */
+button, .btn {
+  background: #ff0000; /* rouge */
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: #008000; /* vert */
+  transform: scale(1.05);
+}
+
+.btn-back {
+  margin-top: 15px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 20px;
+}
+
+.btn-back:hover {
+  background: white;
+  color: #008000;
+}
+
+/* === Champs des formulaires === */
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 1em;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #008000;
+  box-shadow: 0 0 6px #00cc66;
+}
+
+/* === Page d’accueil === */
+.home .container {
+  text-align: center;
+  padding: 20px;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.logo h1 {
+  font-size: 2em;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.description {
+  margin: 15px 0 25px;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+/* === Bouton d'accueil === */
+.btn-continue {
+  background: white;
+  color: #ff0000;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-continue:hover {
+  background: #008000;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* === Page Étudiants === */
+.etudiants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.etudiant-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.etudiant-num {
+  font-weight: bold;
+  color: #ffffff;
+  width: 25px;
+  text-align: right;
+}
+
+.etudiant-row input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ff0000;
+  outline: none;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.etudiant-row input:focus {
+  border-color: #00cc66;
+}
+
+/* 🔹 Bouton confirmer séparé */
+#formEtudiants .btn {
+  margin-top: 25px;
+  background: white;
+  color: #ff0000;
+  border-radius: 25px;
+}
+
+#formEtudiants .btn:hover {
+  background: #008000;
+  color: white;
+}
+
+/* ✅ Message de confirmation */
+.message-confirmation {
+  background: #00cc66;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 1.1em;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .container { padding: 20px; }
+  .logo img { width: 80px; height: 80px; }
+  h1 { font-size: 1.6em; }
+  input, button { font-size: 0.9em; }
+}
+
+/* === FORMULAIRES === */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 1em;
+  outline: none;
+}
+
+input::placeholder {
+  color: #555;
+  opacity: 0.8;
+}
+
+input:focus {
+  border-color: #00cc66;
+  box-shadow: 0 0 6px #00cc66;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* espace entre les boutons (au lieu de 10px) */
+  margin-top: 30px; /* espace au-dessus de la liste */
+}
+/* === PAGE D'ACCUEIL (ARABE + LOGO ROND) === */
+.home .container {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  color: white;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.logo img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%; /* rend le logo parfaitement rond */
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 255, 100, 0.6);
+}
+
+.logo h1 {
+  font-size: 1.6em;
+  color: #fff;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  color: #f8f8f8;
+}
+
+.btn-continue {
+  background: white;
+  color: #ff0000;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-continue:hover {
+  background: #008000;
+  color: white;
+  transform: scale(1.05);
+}
+/* === Ajustement de l’espacement du bouton de déconnexion === */
+.btn-logout {
+  margin-top: 40px; /* 🔹 espace supplémentaire sous les boutons de cycle */
+}
+/* === Ajustement de la page de connexion === */
+.container {
+  padding-top: 50px; /* 🔹 espace au-dessus du contenu */
+}
+
+.logo {
+  margin-bottom: 30px; /* 🔹 espace entre le logo et le formulaire */
+}
+
+.logo img {
+  width: 130px;
+  height: 130px;
+  display: block;
+  margin: 0 auto 10px auto; /* centré + espace en bas */
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+body.etudiants {
+  align-items: flex-start;
+  overflow-y: auto;
+  padding-top: 40px;
+}
+
+body.home {
+  align-items: center;
+}
+
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des étudiants - Study Tourism</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="etudiants">
+  <div class="container">
+    <h1>قائمة الطلبة</h1>
+    <p id="info-module"></p>
+    <p id="info-destination"></p>
+    <p id="info-niveau"></p>
+
+    <form id="formEtudiants">
+      <div id="listeEtudiants" class="etudiants-list"></div>
+
+      <button type="submit" class="btn">✅ تأكيد الرحلة</button>
+    </form>
+
+    <button onclick="history.back()" class="btn btn-back">⬅ رجوع</button>
+  </div>
+
+  <script>
+    // 🧭 Récupère les infos depuis l’URL
+    const params = new URLSearchParams(window.location.search);
+    const moduleNom = params.get("module");
+    const destination = params.get("destination");
+    const niveau = params.get("niveau");
+
+    // 🧾 Affiche les infos sélectionnées
+    document.getElementById("info-module").textContent = "Module : " + moduleNom;
+    document.getElementById("info-destination").textContent = "Destination : " + destination;
+    document.getElementById("info-niveau").textContent = "Niveau : " + niveau;
+
+    // 🧍 Crée les champs pour 10 étudiants
+    const liste = document.getElementById("listeEtudiants");
+    for (let i = 1; i <= 10; i++) {
+      const row = document.createElement("div");
+      row.className = "etudiant-row";
+
+      const label = document.createElement("span");
+      label.className = "etudiant-num";
+      label.textContent = i + ".";
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = "etudiant" + i;
+      input.placeholder = "Nom et prénom de l’étudiant " + i;
+
+      row.appendChild(label);
+      row.appendChild(input);
+      liste.appendChild(row);
+    }
+
+    // 📤 Quand on confirme le voyage
+    document.getElementById("formEtudiants").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Récupère les noms des étudiants
+      const etudiants = [];
+      for (let i = 1; i <= 10; i++) {
+        const val = document.querySelector(`[name=etudiant${i}]`).value.trim();
+        if (val) etudiants.push(val);
+      }
+
+      // Envoi des données au serveur
+      const res = await fetch("/envoyer-confirmation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          module: moduleNom,
+          destination,
+          niveau,
+          etudiants
+        })
+      });
+
+      const message = await res.text();
+
+      // ✅ Affiche un message visuel de confirmation
+      const divMsg = document.createElement("div");
+      divMsg.className = "message-confirmation";
+      divMsg.textContent = "✅ " + message;
+      document.body.appendChild(divMsg);
+
+      // ⏳ Retour automatique au tableau de bord après 3 secondes
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

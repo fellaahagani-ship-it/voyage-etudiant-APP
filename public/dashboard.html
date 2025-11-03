@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord - Study Tourism</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .prof-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .prof-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body class="dashboard">
+  <div class="container">
+    <h1 id="welcome">مرحبا استاذ 👨‍🏫</h1>
+
+    <!-- 🔽 Infos dynamiques -->
+    <div class="prof-info">
+      <img id="photoProf" src="" alt="Photo du prof" class="prof-photo" />
+      <h2 id="nomProf">Chargement...</h2>
+    </div>
+    <!-- 🔼 -->
+
+    <h2>اختر الطور </h2>
+
+    <div class="buttons">
+      <button onclick="window.location.href='licence.html'" class="btn">طور ليسانس</button>
+      <button onclick="window.location.href='master.html'" class="btn">طور ماستر</button>
+      <button onclick="window.location.href='dawra.html'" class="btn">دورات تكوينية</button>
+    </div>
+
+    <button onclick="window.location.href='auth.html'" class="btn btn-logout">تسجيل الخروج</button>
+  </div>
+
+  <script>
+    // Récupération des infos du prof connecté
+    fetch('/api/professeur')
+      .then(res => res.json())
+      .then(prof => {
+        const nomElem = document.getElementById('nomProf');
+        const photoElem = document.getElementById('photoProf');
+
+        // 🔹 Nom
+        if (nomElem) {
+          nomElem.textContent = prof.nom && prof.prenom
+            ? `${prof.nom} ${prof.prenom}`
+            : (prof.nom || "Professeur");
+        }
+
+        // 🔹 Photo
+        if (photoElem) {
+          if (prof.photo && prof.photo !== "null" && prof.photo !== "") {
+            photoElem.src = prof.photo;
+          } else {
+            // Si pas de photo => on garde le cercle vide (pas caché)
+            photoElem.src = "";
+            photoElem.alt = "Photo non disponible";
+          }
+        }
+      })
+      .catch(err => console.error("Erreur API professeur :", err));
+  </script>
+</body>
+</html>

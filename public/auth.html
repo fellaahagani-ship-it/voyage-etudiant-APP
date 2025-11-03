@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="logo app.jpg" alt="شعار التطبيق">
+      <h1>تسجيل الدخول</h1>
+    </div>
+
+    <form action="/login" method="POST">
+      <input type="text" name="nom" placeholder="الاسم" required>
+      <input type="password" name="password" placeholder="كلمة المرور" required>
+      <button type="submit" class="btn">🔑 تسجيل الدخول</button>
+    </form>
+
+    <div class="buttons">
+      <a href="/register" class="btn">🧑‍🏫 إنشاء حساب جديد</a>
+      <a href="/" class="btn btn-back">🏠 الرجوع إلى القائمة الرئيسية</a>
+    </div>
+  </div>
+</body>
+</html>

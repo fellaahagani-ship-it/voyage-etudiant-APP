@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة الرئيسية - Study Tourism</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="home">
+  <div class="container">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="شعار Study Tourism" id="logo">
+      <h1>مرحبا بكم في منصة Study Tourism</h1>
+    </div>
+    <p class="description">اضغط على الشعار للدخول إلى صفحة تسجيل الدخول</p>
+    <button class="btn-continue" id="continueBtn">متابعة</button>
+  </div>
+
+  <script>
+    // Redirection vers la page d'authentification quand on clique sur le logo ou le bouton
+    document.getElementById("logo").addEventListener("click", () => {
+      window.location.href = "/auth";
+    });
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      window.location.href = "/auth";
+    });
+  </script>
+</body>
+</html>

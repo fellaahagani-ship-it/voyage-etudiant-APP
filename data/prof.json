@@ -1,0 +1,38 @@
+[
+  {
+    "nom": "fella",
+    "prenom": "fella",
+    "password": "fella",
+    "photo": "/uploads/a6a3e220b8b48243d808d7d6e7382242"
+  },
+  {
+    "nom": "taki",
+    "prenom": "taki",
+    "password": "taki",
+    "photo": "/uploads/8445232384a5e496b830865eb47f6cd3"
+  },
+  {
+    "nom": "taki",
+    "prenom": "taki",
+    "password": "taki",
+    "photo": ""
+  },
+  {
+    "nom": "taki raki",
+    "prenom": "fella",
+    "password": "fella",
+    "photo": ""
+  },
+  {
+    "nom": "amira",
+    "prenom": "amira",
+    "password": "amira",
+    "photo": "/uploads/1761343623372-899149294.jpg"
+  },
+  {
+    "nom": "hagani",
+    "prenom": "fella",
+    "password": "fella",
+    "photo": "/uploads/1761344843962-606161635.jpg"
+  }
+]

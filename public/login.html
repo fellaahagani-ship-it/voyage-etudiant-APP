@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion - Study Tourism</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="login">
+  <div class="container">
+    <h1>تسجيل الدخول</h1>
+    <form action="/login" method="POST">
+      <label>الاسم العائلي:</label>
+      <input type="text" name="nom" placeholder="أدخل اسمك العائلي" required />
+
+      <label>كلمة المرور:</label>
+      <input type="password" name="password" placeholder="أنشئ كلمة مرور" required />
+
+      <button type="submit" class="btn">تسجيل الدخول</button>
+    </form>
+
+    <p class="link">
+      ليس لديك حساب بعد؟ <a href="register.html">سجّل الآن</a>
+    </p>
+  </div>
+</body>
+</html>

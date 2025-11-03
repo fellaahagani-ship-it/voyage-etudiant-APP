@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription - Study Tourism</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* === Ajustement spécifique à la page d’inscription === */
+    .register .container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      padding: 35px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      color: white;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .register h1 {
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+
+    .register p {
+      color: #eee;
+      font-size: 1em;
+    }
+
+    .form-group {
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #ff0000;
+      background: rgba(255,255,255,0.9);
+      color: #000;
+      font-size: 1em;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="file"]:focus {
+      border-color: #00cc66;
+      box-shadow: 0 0 6px #00cc66;
+    }
+
+    /* Bouton */
+    .btn {
+      background: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #008000;
+      transform: scale(1.05);
+    }
+
+    /* Lien de connexion */
+    .link {
+      margin-top: 20px;
+      color: white;
+    }
+
+    .link a {
+      color: #00ff88;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Prévisualisation de la photo */
+    #preview {
+      display: none;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      margin-top: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #preview:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,255,100,0.6);
+    }
+  </style>
+</head>
+
+<body class="register">
+  <div class="container">
+    <h1>تسجيل الأستاذ</h1>
+    <p>يرجى ملىء المعلومات أدناه.</p>
+
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nom">الاسم العائلي:</label>
+        <input type="text" id="nom" name="nom" placeholder="أدخل اسمك العائلي" required />
+      </div>
+
+      <div class="form-group">
+        <label for="prenom">الاسم الشخصي:</label>
+        <input type="text" id="prenom" name="prenom" placeholder="أدخل اسمك الشخصي" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" name="password" placeholder="أنشئ كلمة مرور" required />
+      </div>
+
+      <div class="form-group">
+        <label for="photo">الصورة (اختياري):</label>
+        <input type="file" id="photo" name="photo" accept="image/*" />
+        <img id="preview" alt="Aperçu de la photo" />
+      </div>
+
+      <button type="submit" class="btn">تسجيل</button>
+    </form>
+
+    <p class="link">
+      هل لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+    </p>
+  </div>
+
+  <script>
+    // Afficher la prévisualisation de la photo avant inscription
+    document.getElementById('photo').addEventListener('change', function(event) {
+      const input = event.target;
+      const preview = document.getElementById('preview');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  </script>
+</body>
+</html>
